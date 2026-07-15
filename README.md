@@ -1,2 +1,2 @@
-# Cafe-Sales-Data-Cleaning-Analysis-Project
-This project analyzes cafe transaction data to identify revenue drivers, customer ordering patterns, and product performance. The dataset initially contained significant data quality issues including missing values, inconsistent product identifiers, invalid dates, and corrupted transaction fields.
+# Cafe Sales Data Cleaning & Exploratory Data Analysis 
+This project demonstrates an end-to-end SQL workflow for cleaning, validating, and analyzing a café sales dataset containing 10,000 transactions. The objective was not only to prepare the data for analysis but also to answer practical business questions regarding product performance, category strategy, revenue trends, and data quality.
