@@ -81,3 +81,19 @@ Hidden characters in categorical fields
 Incomplete payment method and order type values
 
 Rather than deleting records, recoverable values were reconstructed using validated business rules, while unrecoverable values were preserved as `NULL`.
+
+## Data Quality Summary
+| Column      | Fixed | Remaining |
+| ----------- | ----: | --------: |
+| `menu`      |   410 |       113 |
+| `menu_id`   |   384 |       113 |
+| `qty`       |  1340 |       174 |
+| `price`     |  1023 |       169 |
+|`total_spent`|  1197 |       343 |
+
+## Business Questions
+1. Which products are the revenue drivers and how concentrated is that revenue?
+
+
+
+
