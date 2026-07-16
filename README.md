@@ -60,7 +60,7 @@ Every recovery rule was validated before updates were applied.
 | Price             | Recovered using price = total_spent ÷ qty                                     |
 | Total spent       | Recovered using total_spent = qty × price                                     |
 | Payment method    | Converted placeholder values to NULL                                          |
-| Order type        | Removed hidden invalid placeholder values                                     |
+| Order type        | Converted placeholder values to NULL                                          |
 
 ## Initial Data Quality Issues
 
@@ -70,7 +70,7 @@ The dataset contained several quality problems that required cleaning before ana
 * Invalid transaction dates
 * Missing quantity, price, and total transaction values
 * Inconsistent category assignments
-* Hidden characters in categorical fields
+* Hidden characters in `order_type` column
 * Incomplete payment method and order type values
 
 Rather than deleting records, recoverable values were reconstructed using validated business rules, while unrecoverable values were preserved as `NULL`.
@@ -101,7 +101,8 @@ Our total Revenue is 880,934,000 which is broadly balanced across the menu with 
   
 **2. Which product category should the business prioritize?**
 
-Food is the highest value category per transaction, while Drinks is the highest frequency category" — "we have two different categories that are valuable for two different reasons: Food and Drinks.
+Food is the highest value category per transaction, while Drinks is the highest frequency category.
+we have two different categories that are valuable for two different reasons: Food and Drinks.
 
 * Food category is our main leader for revenue since it leads the revenue by (341.8M, 38.8%) due to its high average transaction order value (113606.51)
 
