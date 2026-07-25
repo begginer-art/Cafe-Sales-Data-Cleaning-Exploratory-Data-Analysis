@@ -85,7 +85,72 @@ Rather than deleting records, recoverable values were reconstructed using valida
 |`total_spent`|  1197 |       343 |
 
 ## Business Questions
-**1. Which products are the revenue drivers and how concentrated is that revenue?** 
+**1. How did revenue change throughout the year?**
+*	Revenue increased from 211.7M in Q1 to 225.8M in Q4, representing an overall growth of 6.66% across the year.
+
+*	Food and Drinks consistently generated the largest share of total revenue, providing relatively stable performance throughout the year. 
+
+*	Dessert was the primary source of quarter-to-quarter revenue volatility. Strong Dessert performance drove revenue growth in Q2 and Q4, while its decline was the main reason for the overall revenue slowdown in Q3. 
+
+*	Revenue fluctuations throughout the year were driven primarily by changes in sales volume, as product prices remained largely stable. 
+
+*	The dataset does not include marketing, operational, or customer-level information, so the underlying causes of changes in demand cannot be confirmed.
+
+**Q1 → Q2: Moderate Growth (+3.3%)**
+
+Revenue increased by 6.9M (+3.3%). Dessert was the primary growth driver, contributing approximately 3.47M (50%) of the total quarterly revenue increase.
+
+The category's growth was concentrated in its two best-performing products:
+
+*	New York Cheesecake: Revenue increased by 28.36%, driven by higher sales volume.
+
+*	Classic Tiramisu: Revenue increased by 10.73%, also driven by higher sales volume. 
+This indicates that the improvement in Dessert performance was largely demand-driven rather than price-driven.
+
+**Q2 → Q3: Slight Decline (-1.0%)**
+
+Revenue declined by 1.0%, primarily because Dessert revenue fell by 6.5%. Although Food (+1.4%) and Drinks (+2.2%) continued to grow, their gains were insufficient to offset the decline in Dessert.
+
+The decrease in Dessert revenue was concentrated in its two highest-performing products, both of which experienced revenue declines of more than 16%. Since prices remained unchanged during this period, the decline appears to have been driven by lower sales volume rather than pricing.
+
+Food also showed weaker performance during the quarter. Beef Carbonara Pasta, the category's highest-revenue product, declined by 11.89%. However, this was partially offset by strong growth in Grill Chicken Caesar Salad (+9.84%) and Nasi Goreng Kampung (+19.08%), limiting the overall impact on the Food category.
+Further Investigation
+
+The available dataset cannot explain why demand declined during this period. Additional business information would be required, such as:
+
+*	Marketing or promotional campaigns 
+
+*	Changes in menu placement or product visibility 
+
+*	Seasonal or external factors affecting customer demand 
+
+*	Product availability or operational issues
+
+**Q3 → Q4: Strong Recovery (+4.4%)**
+ 	
+Revenue rebounded by 4.4%, representing the strongest quarterly growth of the year. The recovery was driven primarily by Dessert (+10.6%) and supported by continued growth in Drinks (+5.4%).
+
+Dessert recovered as New York Cheesecake and Classic Tiramisu returned to growth, while Choco Lava Cake also posted a strong revenue increase of 17.77%. Across the category, revenue growth was driven by increased sales volume rather than price changes.
+ 
+Although Food remained the highest-revenue category overall, it recorded its first quarterly revenue decline. This was largely associated with Beef Carbonara Pasta remaining below its earlier performance level, while Grill Chicken Caesar Salad was unable to sustain the strong growth observed in the previous quarter.
+
+
+
+
+**2. Which product category should the business prioritize?**
+
+Food is the highest value category per transaction, while Drinks is the highest frequency category.
+we have two different categories that are valuable for two different reasons: Food and Drinks.
+
+* Food category is our main leader for revenue since it leads the revenue by (341.8M, 38.8%) due to its high average transaction order value (113606.51)
+
+* the drinks category on the other hand is the most frequent bought category and it leads all the categories in transaction count and quantity(3558 transactions, 8937 units, 36.95% of quantity)
+
+* by AOV the food leads by a wide margin (113606.51 for food VS 83139.41 for dessert VS 79292.02 for drinks)
+
+* it's worth noting that while the dessert category comes last in revenue it still has a huge impact on our total revenue (close to 29%), so we shouldn't disregard it completely as those supplementary sales are really vital to our business
+
+**3. Which products are the revenue drivers and how concentrated is that revenue?** 
 
 Our total Revenue is 880,934,000 which is broadly balanced across the menu with no overwhelming dominant item, but the top three items reveal two distinct paths to revenue: volume (Caramel Machiato) and price (Beef Carbonara Pasta and Buttermilk Fried Chicken), which matters because it means a single promotional strategy won't suit all the top performers.
 
@@ -99,18 +164,6 @@ Our total Revenue is 880,934,000 which is broadly balanced across the menu with 
 
 * Because the high-AOV items earn their revenue through price rather than volume, discount-driven promotions risk undercutting the very thing that makes them valuable. A non-discount lever (e.g. visibility/awareness) may be a better fit — though this dataset (transaction records only, no marketing or channel data) can't confirm which promotional approach would actually work.
   
-**2. Which product category should the business prioritize?**
-
-Food is the highest value category per transaction, while Drinks is the highest frequency category.
-we have two different categories that are valuable for two different reasons: Food and Drinks.
-
-* Food category is our main leader for revenue since it leads the revenue by (341.8M, 38.8%) due to its high average transaction order value (113606.51)
-
-* the drinks category on the other hand is the most frequent bought category and it leads all the categories in transaction count and quantity(3558 transactions, 8937 units, 36.95% of quantity)
-
-* by AOV the food leads by a wide margin (113606.51 for food VS 83139.41 for dessert VS 79292.02 for drinks)
-
-* it's worth noting that while the dessert category comes last in revenue it still has a huge impact on our total revenue (close to 29%), so we shouldn't disregard it completely as those supplementary sales are really vital to our business
 
 
 
