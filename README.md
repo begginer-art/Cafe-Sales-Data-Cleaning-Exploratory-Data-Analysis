@@ -96,9 +96,9 @@ Rather than deleting records, recoverable values were reconstructed using valida
 *	Revenue fluctuations throughout the year were driven primarily by changes in sales volume, as product prices remained largely stable. 
 
 *	The dataset does not include marketing, operational, or customer-level information, so the underlying causes of changes in demand cannot be confirmed.
-
-<img width="682" height="365" alt="image" src="https://github.com/user-attachments/assets/cb64cd1a-7ff4-401e-b1a6-d9b23290446c" />
-
+<p align="center">
+<img width="677" height="361" alt="image" src="https://github.com/user-attachments/assets/7f2ba5cd-7091-4d4c-be1f-5d5f8b0d25f7" />
+</p>
 
 **Q1 → Q2: Moderate Growth (+3.3%)**
 
@@ -144,15 +144,16 @@ Although Food remained the highest-revenue category overall, it recorded its fir
 **2. Which product category should the business prioritize?**
 
 Food is the highest value category per transaction, while Drinks is the highest frequency category.
-we have two different categories that are valuable for two different reasons: Food and Drinks.
 
-it's worth noting that while the dessert category comes last in revenue it still has a huge impact on our total revenue (close to 29%), so we shouldn't disregard it completely as those supplementary sales are really vital to our business
+We have two different categories that are valuable for two different reasons: Food and Drinks.
+
+It's worth noting that while the dessert category comes last in revenue it still has a huge impact on our total revenue (close to 29%), so we shouldn't disregard it completely as those supplementary sales are really vital to our business
 
 * Food category is our main leader for revenue since it leads the revenue by (341.8M, 38.8%) due to its high average transaction order value (113606.51)
 
-* the drinks category on the other hand is the most frequent bought category and it leads all the categories in transaction count and quantity(3558 transactions, 8937 units, 36.95% of quantity)
+* The drinks category on the other hand is the most frequent bought category and it leads all the categories in transaction count and quantity(3558 transactions, 8937 units, 36.95% of quantity)
 
-* by AOV the food leads by a wide margin (113606.51 for food VS 83139.41 for dessert VS 79292.02 for drinks)
+* By AOV the food leads by a wide margin (113606.51 for food VS 83139.41 for dessert VS 79292.02 for drinks)
 
 
 **3. Which products are the revenue drivers and how concentrated is that revenue?** 
