@@ -102,6 +102,7 @@ Rather than deleting records, recoverable values were reconstructed using valida
 *	The dataset does not include marketing, operational, or customer-level information, so the underlying causes of changes in demand cannot be confirmed.
 
 **Quarterly analysis**
+
 <p align="left">
 <img width="676" height="358" alt="image" src="https://github.com/user-attachments/assets/7d3dfdbf-be72-4ac3-9ce9-2cc8941b7db4" />
 </p>
