@@ -164,19 +164,35 @@ It's worth noting that while the dessert category comes last in revenue it still
 
 
 **3. Which products are the revenue drivers and how concentrated is that revenue?** 
-
-Our total Revenue is 880,934,000 which is broadly balanced across the menu with no overwhelming dominant item, but the top three items reveal two distinct paths to revenue: volume (Caramel Machiato) and price (Beef Carbonara Pasta and Buttermilk Fried Chicken), which matters because it means a single promotional strategy won't suit all the top performers.
-
-* Caramel Machiato is the top item driving the revenue with more than 94M in total revenue (10.69%), it's also the most bought item with over 2500 units sold (10.47% of total quantity percentage), it ranks 8 in average transaction_order_value through the menu, it's worth noting this is also the only item with a price change
-
-* Beef Carbonara Pasta comes second in overall revenue with more than 77M (8.81%) and it comes first overall in AOV per transaction (129609.35)
-
-* Buttermilk Fried Chicken is the third ranking item bringing in more than 73M (8.3%) in revenue and its also ranks the second in AOV per transaction (120434.93)
-
-* Revenue share ranges from 10.69% down to 3.85% across items, with most adjacent items within 1% of each other. The only notable break in that pattern is a 1.88% gap between Caramel Machiato (the top item) and the next-ranked item, suggesting Caramel Machiato is a mild standout rather than a dominant outlier.
-
-* Because the high-AOV items earn their revenue through price rather than volume, discount-driven promotions risk undercutting the very thing that makes them valuable. A non-discount lever (e.g. visibility/awareness) may be a better fit — though this dataset (transaction records only, no marketing or channel data) can't confirm which promotional approach would actually work.
-  
+<img width="680" height="361" alt="image" src="https://github.com/user-attachments/assets/f113546c-0883-463d-8416-ca3db9d431be" />
 
 
+The café generated 880.9M in revenue during 2023. Revenue is relatively well distributed across the menu, with no single product dominating sales.
+
+The top five menu items generated approximately 50% of total revenue, while the top ten accounted for roughly 82%, indicating a diversified revenue mix.
+
+Revenue share ranges from 10.69% down to 3.85% across items, with most adjacent items within 1% of each other. The only notable break in that pattern is a 1.88% gap between Caramel Machiato (the top item) and the next-ranked item, suggesting Caramel Machiato is a mild standout rather than a dominant outlier.
+
+* Caramel Machiato was the highest-revenue product, contributing 94.1M (10.69%) of total revenue. It was also the most frequently purchased item, accounting for 10.47% of all units sold despite ranking only 8th in average order value (AOV). It was also the only product whose price changed during the year.
+
+* Beef Carbonara Pasta ranked second in revenue (77.6M, 8.81%) and had the highest AOV across the menu.
+
+* Buttermilk Fried Chicken ranked third in revenue (73.1M, 8.30%) and had the second-highest AOV.
+
+**Business Insight**
+
+The three highest-performing products generate revenue through different mechanisms:
+
+* Caramel Machiato succeeds through high sales volume.
+
+* Beef Carbonara Pasta and Buttermilk Fried Chicken succeed through higher transaction value rather than purchase frequency.
+
+This distinction suggests that a single promotional strategy is unlikely to maximize revenue across all top-performing products.
+
+**Recommendation**
+* Focus on maintaining purchase volume for Caramel Machiato through visibility and customer engagement.
+
+* Preserve the premium positioning of Beef Carbonara Pasta and Buttermilk Fried Chicken, as discounting could reduce the price advantage that drives their performance.
+
+* Because this dataset contains only transaction-level sales data, the effectiveness of specific promotional strategies cannot be validated without additional information such as marketing campaigns, customer segments, or channel performance.
 
