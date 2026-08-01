@@ -87,6 +87,10 @@ Rather than deleting records, recoverable values were reconstructed using valida
 ## Business Questions
 **1. How did revenue change throughout the year?**
 
+<p align="left">
+<img width="677" height="361" alt="image" src="https://github.com/user-attachments/assets/7f2ba5cd-7091-4d4c-be1f-5d5f8b0d25f7" />
+</p>
+
 *	Revenue increased from 211.7M in Q1 to 225.8M in Q4, representing an overall growth of 6.66% across the year.
 
 *	Food and Drinks consistently generated the largest share of total revenue, providing relatively stable performance throughout the year. 
@@ -96,8 +100,10 @@ Rather than deleting records, recoverable values were reconstructed using valida
 *	Revenue fluctuations throughout the year were driven primarily by changes in sales volume, as product prices remained largely stable. 
 
 *	The dataset does not include marketing, operational, or customer-level information, so the underlying causes of changes in demand cannot be confirmed.
-<p align="center">
-<img width="677" height="361" alt="image" src="https://github.com/user-attachments/assets/7f2ba5cd-7091-4d4c-be1f-5d5f8b0d25f7" />
+
+**Quarterly analysis**
+<p align="left">
+<img width="676" height="358" alt="image" src="https://github.com/user-attachments/assets/7d3dfdbf-be72-4ac3-9ce9-2cc8941b7db4" />
 </p>
 
 **Q1 → Q2: Moderate Growth (+3.3%)**
