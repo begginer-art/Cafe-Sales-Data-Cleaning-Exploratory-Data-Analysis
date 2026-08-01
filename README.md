@@ -162,16 +162,14 @@ It's worth noting that while the dessert category comes last in revenue it still
 
 * By AOV the food leads by a wide margin (113606.51 for food VS 83139.41 for dessert VS 79292.02 for drinks)
 
-
 **3. Which products are the revenue drivers and how concentrated is that revenue?** 
+
+<p align="left">
 <img width="680" height="361" alt="image" src="https://github.com/user-attachments/assets/f113546c-0883-463d-8416-ca3db9d431be" />
-
-
+</p>
 The café generated 880.9M in revenue during 2023. Revenue is relatively well distributed across the menu, with no single product dominating sales.
 
 The top five menu items generated approximately 50% of total revenue, while the top ten accounted for roughly 82%, indicating a diversified revenue mix.
-
-Revenue share ranges from 10.69% down to 3.85% across items, with most adjacent items within 1% of each other. The only notable break in that pattern is a 1.88% gap between Caramel Machiato (the top item) and the next-ranked item, suggesting Caramel Machiato is a mild standout rather than a dominant outlier.
 
 * Caramel Machiato was the highest-revenue product, contributing 94.1M (10.69%) of total revenue. It was also the most frequently purchased item, accounting for 10.47% of all units sold despite ranking only 8th in average order value (AOV). It was also the only product whose price changed during the year.
 
