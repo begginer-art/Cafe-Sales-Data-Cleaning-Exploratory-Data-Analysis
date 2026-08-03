@@ -1,6 +1,25 @@
 # Cafe Sales Data Cleaning & Exploratory Data Analysis 
 This project demonstrates an end-to-end SQL workflow for cleaning, validating, and analyzing a café sales dataset containing 10,000 transactions.  
 The objective was not only to prepare the data for analysis but also to answer practical business questions regarding product performance, category strategy, revenue trends, and data quality.
+
+## **Executive Summary**
+
+After cleaning 10,000 café transactions, the analysis found:
+
+* Revenue grew 6.7% across the year.
+
+* Food generated the highest revenue (38.8%).
+
+* Drinks generated the highest transaction volume.
+
+* Dessert drove most quarter-to-quarter revenue fluctuations.
+
+* Top 5 products contributed ~50% of revenue.
+
+* Revenue concentration was low, indicating a diversified menu.
+
+* Sales changes were primarily driven by volume rather than pricing.
+
 ## Business Problem
 
 The cafe has one year of transaction-level sales data, but the dataset contains missing values, inconsistent labels, placeholder values (missing, nan, error, unknown), and invalid records.
@@ -84,6 +103,16 @@ Rather than deleting records, recoverable values were reconstructed using valida
 | `price`     |  1023 |       169 |
 |`total_spent`|  1197 |       343 |
 
+## **Analysis Scope**
+
+Although the cleaned dataset contains 10,000 transactions, all revenue and quantity analyses were performed using 9,657 transactions.
+
+The remaining 343 transactions (3.43%) were excluded because the three key analytical fields (`qty`, `price`and `total_spent`) could not be reliably reconstructed and therefore remained `NULL`.
+
+Rather than imputing unsupported values or removing the records during cleaning, these transactions were preserved in the dataset but excluded only from analyses requiring sales metrics.
+
+This approach maintains data integrity while ensuring that reported business metrics are based only on complete and reliable transaction data.
+
 ## Business Questions
 **1. How did revenue change throughout the year?**
 
@@ -101,7 +130,7 @@ Rather than deleting records, recoverable values were reconstructed using valida
 
 *	The dataset does not include marketing, operational, or customer-level information, so the underlying causes of changes in demand cannot be confirmed.
 
-**Quarterly analysis**
+**Quarter-by-Quarter Revenue Analysis**
 
 <p align="left">
 <img width="676" height="358" alt="image" src="https://github.com/user-attachments/assets/7d3dfdbf-be72-4ac3-9ce9-2cc8941b7db4" />
