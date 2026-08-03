@@ -65,6 +65,15 @@ Each row represents a single customer transaction and includes information about
 | `payment_method`   | Payment method used                      |
 | `order_type`       | Dine In, Take Away, or Online Order      |
 
+## **Analysis Scope**
+
+Although the cleaned dataset contains 10,000 transactions, all revenue and quantity analyses were performed using 9,657 transactions.
+
+The remaining 343 transactions (3.43%) were excluded because the three key analytical fields (`qty`, `price`and `total_spent`) could not be reliably reconstructed and therefore remained `NULL`.
+
+Rather than imputing unsupported values or removing the records during cleaning, these transactions were preserved in the dataset but excluded only from analyses requiring sales metrics.
+
+This approach maintains data integrity while ensuring that reported business metrics are based only on complete and reliable transaction data.
 
 ## Data Cleaning
 Every recovery rule was validated before updates were applied.
@@ -103,21 +112,11 @@ Rather than deleting records, recoverable values were reconstructed using valida
 | `price`     |  1023 |       169 |
 |`total_spent`|  1197 |       343 |
 
-## **Analysis Scope**
-
-Although the cleaned dataset contains 10,000 transactions, all revenue and quantity analyses were performed using 9,657 transactions.
-
-The remaining 343 transactions (3.43%) were excluded because the three key analytical fields (`qty`, `price`and `total_spent`) could not be reliably reconstructed and therefore remained `NULL`.
-
-Rather than imputing unsupported values or removing the records during cleaning, these transactions were preserved in the dataset but excluded only from analyses requiring sales metrics.
-
-This approach maintains data integrity while ensuring that reported business metrics are based only on complete and reliable transaction data.
-
 ## Business Questions
 **1. How did revenue change throughout the year?**
 
 <p align="left">
-<img width="677" height="361" alt="image" src="https://github.com/user-attachments/assets/7f2ba5cd-7091-4d4c-be1f-5d5f8b0d25f7" />
+<img width="680" height="365" alt="image" src="https://github.com/user-attachments/assets/7ec4c393-1f3f-4340-afec-e27278f4069d" />
 </p>
 
 *	Revenue increased from 211.7M in Q1 to 225.8M in Q4, representing an overall growth of 6.66% across the year.
