@@ -41,6 +41,12 @@ This project uses a café sales dataset containing 10,000 transaction-level reco
 
 Each row represents a single customer transaction and includes information about the purchased menu item, quantity, price, payment method, order type, and transaction date.
 
+## **Dataset Source**
+
+This project uses Dataset 1 (10,000 transactions) from the Sunrise Cafe Sales Dataset Series, a synthetic dataset intentionally designed with realistic data quality issues for practicing data cleaning and business analysis. The dataset contains placeholder values, inconsistent labels, missing data, and corrupted records that simulate common real-world data quality problems.
+
+**Source:** https://github.com/beniii-data/dirty-cafe-dataset/
+
 ## Dataset characteristics
 
 | Attribute         | Description                          |
@@ -65,15 +71,6 @@ Each row represents a single customer transaction and includes information about
 | `payment_method`   | Payment method used                      |
 | `order_type`       | Dine In, Take Away, or Online Order      |
 
-## **Analysis Scope**
-
-Although the cleaned dataset contains 10,000 transactions, all revenue and quantity analyses were performed using 9,657 transactions.
-
-The remaining 343 transactions (3.43%) were excluded because the three key analytical fields (`qty`, `price`and `total_spent`) could not be reliably reconstructed and therefore remained `NULL`.
-
-Rather than imputing unsupported values or removing the records during cleaning, these transactions were preserved in the dataset but excluded only from analyses requiring sales metrics.
-
-This approach maintains data integrity while ensuring that reported business metrics are based only on complete and reliable transaction data.
 
 ## Data Cleaning
 Every recovery rule was validated before updates were applied.
@@ -111,6 +108,16 @@ Rather than deleting records, recoverable values were reconstructed using valida
 | `qty`       |  1340 |       174 |
 | `price`     |  1023 |       169 |
 |`total_spent`|  1197 |       343 |
+
+## **Analysis Scope**
+
+Although the cleaned dataset contains 10,000 transactions, all revenue and quantity analyses were performed using 9,657 transactions.
+
+The remaining 343 transactions (3.43%) were excluded because the three key analytical fields (`qty`, `price`and `total_spent`) could not be reliably reconstructed and therefore remained `NULL`.
+
+Rather than imputing unsupported values or removing the records during cleaning, these transactions were preserved in the dataset but excluded only from analyses requiring sales metrics.
+
+This approach maintains data integrity while ensuring that reported business metrics are based only on complete and reliable transaction data.
 
 ## Business Questions
 **1. How did revenue change throughout the year?**
