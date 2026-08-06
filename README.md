@@ -4,7 +4,7 @@ The objective was not only to prepare the data for analysis but also to answer p
 
 ## **Executive Summary**
 
-After cleaning 10,000 café transactions, the analysis found:
+After cleaning 10,000 cafe transactions, the analysis found:
 
 * Revenue grew 6.7% across the year.
 
