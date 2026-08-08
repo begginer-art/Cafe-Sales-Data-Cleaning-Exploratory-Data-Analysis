@@ -183,7 +183,7 @@ Although Food remained the highest-revenue category overall, it recorded its fir
 
 
 
-**2. Which product category should the business prioritize?**
+**2.How do product categories differ in revenue contribution, purchase frequency, and transaction value?**
 
 Food is the highest value category per transaction, while Drinks is the highest frequency category.
 
@@ -228,4 +228,22 @@ This distinction suggests that a single promotional strategy is unlikely to maxi
 * Preserve the premium positioning of Beef Carbonara Pasta and Buttermilk Fried Chicken, as discounting could reduce the price advantage that drives their performance.
 
 * Because this dataset contains only transaction-level sales data, the effectiveness of specific promotional strategies cannot be validated without additional information such as marketing campaigns, customer segments, or channel performance.
+
+**4. How do customers order and pay?**
+
+**Payment Methods**
+
+<img width="556" height="362" alt="image" src="https://github.com/user-attachments/assets/0f08b040-3b0a-4acb-8de7-48ea71e7261d" />
+
+* Revenue was relatively evenly distributed across the identified payment methods. Debit Card generated the largest share at 32.75%, closely followed by Digital Wallet at 31.87%, while Cash accounted for 18.84%. No recorded payment method clearly dominates revenue.
+
+* 16.55% of revenue is associated with uncategorized payment methods, which limits the reliability of conclusions
+
+**Order Types**
+
+<img width="560" height="362" alt="image" src="https://github.com/user-attachments/assets/6764cb42-6e15-4e40-8bf0-83c0a8f0cea2" />
+
+* Order type revenue was relatively evenly distributed across the three identified channels: Dine In (28.79%), Take Away (28.53%), and Online Order (27.60%). No single order type generated a substantially larger share of revenue. However, 15.09% of revenue is associated with uncategorized order types, which limits the reliability of conclusions about channel performance.
+
+* The available data does not indicate that one order channel should be prioritized over the others based on revenue alone. Improving the completeness of order-type data would be valuable before making channel-specific investment decisions.
 
