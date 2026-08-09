@@ -1,72 +1,63 @@
--- ============================================================================
--- CAFE SALES — DATA CLEANING
--- ============================================================================
+-- Cafe Sales Data Cleaning Project
+-- Documented SQL cleaning workflow
 
-
--- ============================================================================
 -- 1. MENU_ID CLEANING
--- ============================================================================
 -- Investigated invalid menu_id values.
 -- Used valid menu -> menu_id relationships.
 -- Updated only invalid values using the dominant mapping.
 
 WITH menu_map AS (
-    SELECT
-        menu,
-        menu_id,
-        ROW_NUMBER() OVER (
-            PARTITION BY menu
-            ORDER BY COUNT(*) DESC
-        ) AS rn
-    FROM cafe_sales
-    WHERE LOWER(menu) NOT IN ('missing', 'nan', 'unknown', 'error')
-      AND LOWER(menu_id) NOT IN ('missing', 'nan', 'unknown', 'error')
-    GROUP BY menu, menu_id
+SELECT 
+    menu,
+    menu_id,
+    ROW_NUMBER() OVER(
+        PARTITION BY menu
+        ORDER BY COUNT(*) DESC
+    ) rn
+FROM cafe_sales
+WHERE LOWER(menu) NOT IN ('missing','nan','unknown','error')
+AND LOWER(menu_id) NOT IN ('missing','nan','unknown','error')
+GROUP BY menu, menu_id
 )
 UPDATE cafe_sales c
 JOIN menu_map m
-    ON c.menu = m.menu
-    AND m.rn = 1
+ON c.menu = m.menu
+AND m.rn = 1
 SET c.menu_id = m.menu_id;
 
 
--- ============================================================================
 -- 2. MENU NAME CLEANING
--- ============================================================================
 -- Recovered missing menu values using valid menu_id mappings.
 
 WITH item_map AS (
-    SELECT DISTINCT menu, menu_id
-    FROM cafe_sales
-    WHERE LOWER(menu) NOT IN ('missing', 'nan', 'unknown', 'error')
-      AND LOWER(menu_id) NOT IN ('missing', 'nan', 'unknown', 'error')
+SELECT DISTINCT menu, menu_id
+FROM cafe_sales
+WHERE LOWER(menu) NOT IN ('missing','nan','unknown','error')
+AND LOWER(menu_id) NOT IN ('missing','nan','unknown','error')
 )
 UPDATE cafe_sales c1
 JOIN item_map c2
-    ON c1.menu_id = c2.menu_id
+ON c1.menu_id = c2.menu_id
 SET c1.menu = c2.menu
-WHERE LOWER(c1.menu) IN ('missing', 'nan', 'unknown', 'error');
+WHERE LOWER(c1.menu) IN ('missing','nan','unknown','error');
 
 
--- ============================================================================
 -- 3. TRANSACTION DATE CLEANING
--- ============================================================================
 -- Invalid dates were converted to NULL instead of deleting rows.
 -- Reason: other transaction information is still valuable.
 
 UPDATE cafe_sales
 SET transaction_date = NULL
-WHERE LOWER(transaction_date) IN ('missing', 'nan', 'unknown', 'error');
+WHERE LOWER(transaction_date)
+IN ('missing','nan','unknown','error');
 
 
--- ============================================================================
 -- 4. CATEGORY CLEANING
--- ============================================================================
 -- Tested menu -> category relationship.
 -- Found Caramel Machiato had multiple categories:
---   Drinks:  689
---   Dessert: 124
---   Food:    106
+-- Drinks: 689
+-- Dessert: 124
+-- Food: 106
 --
 -- Decision:
 -- Standardize Caramel Machiato to Drinks because it is the dominant category.
@@ -77,192 +68,170 @@ WHERE menu = 'Caramel Machiato';
 
 
 WITH category_map AS (
-    SELECT
-        menu,
-        menu_id,
-        category,
-        ROW_NUMBER() OVER (
-            PARTITION BY menu
-            ORDER BY COUNT(*) DESC
-        ) AS rn
-    FROM cafe_sales
-    WHERE LOWER(category) NOT IN ('nan', 'unknown', 'error', 'missing')
-    GROUP BY menu, menu_id, category
+SELECT
+    menu,
+    menu_id,
+    category,
+    ROW_NUMBER() OVER(
+        PARTITION BY menu
+        ORDER BY COUNT(*) DESC
+    ) rn
+FROM cafe_sales
+WHERE LOWER(category) NOT IN ('nan','unknown','error','missing')
+GROUP BY menu, menu_id, category
 )
 UPDATE cafe_sales c
 JOIN category_map m
-    ON c.menu = m.menu
-    AND c.menu_id = m.menu_id
-    AND m.rn = 1
+ON c.menu = m.menu
+AND c.menu_id = m.menu_id
+AND m.rn = 1
 SET c.category = m.category
 WHERE c.category IS NULL;
 
 
--- ============================================================================
 -- 5. MENU AND MENU_ID BOTH INVALID
--- ============================================================================
 -- No reliable information exists to recover these rows.
 
 UPDATE cafe_sales
 SET menu = NULL,
     menu_id = NULL
-WHERE LOWER(menu) IN ('missing', 'nan', 'unknown', 'error')
-  AND LOWER(menu_id) IN ('missing', 'nan', 'unknown', 'error');
+WHERE LOWER(menu) IN ('missing','nan','unknown','error')
+AND LOWER(menu_id) IN ('missing','nan','unknown','error');
 
 
--- ============================================================================
 -- 6. QUANTITY CLEANING
--- ============================================================================
 -- Found business rule:
---   qty * price = total_spent
+-- qty * price = total_spent
 --
 -- Validation showed 100% matching rate.
 -- Used this relationship to recover missing quantities.
 
 UPDATE cafe_sales
 SET qty = NULL
-WHERE LOWER(TRIM(qty)) IN ('nan', 'unknown', 'error', 'missing', '');
+WHERE LOWER(TRIM(qty))
+IN ('nan','unknown','error','missing','');
 
 UPDATE cafe_sales
 SET price = NULL
-WHERE LOWER(TRIM(price)) IN ('nan', 'unknown', 'error', 'missing', '');
+WHERE LOWER(TRIM(price))
+IN ('nan','unknown','error','missing','');
+
 
 UPDATE cafe_sales
 SET total_spent = NULL
-WHERE LOWER(TRIM(total_spent)) IN ('nan', 'unknown', 'error', 'missing', '');
+WHERE LOWER(TRIM(total_spent))
+IN ('nan','unknown','error','missing','');
+
 
 UPDATE cafe_sales
 SET qty = total_spent / price
 WHERE qty IS NULL
-  AND price IS NOT NULL
-  AND total_spent IS NOT NULL
-  AND price <> 0;
+AND price IS NOT NULL
+AND total_spent IS NOT NULL
+AND price <> 0;
 
-SELECT *
-FROM cafe_sales
-WHERE qty IS NULL;
-
-SELECT
+select  * 
+from cafe_sales 
+where qty is null;
+SELECT 
     CASE
         WHEN price IS NULL AND total_spent IS NULL THEN 'Missing price and total_spent'
         WHEN price IS NULL THEN 'Missing price'
         WHEN total_spent IS NULL THEN 'Missing total_spent'
     END AS reason,
-    COUNT(*) AS cnt
+    COUNT(*) cnt
 FROM cafe_sales
 WHERE qty IS NULL
 GROUP BY reason;
 
+-- 7. PRICE CLEANING 
+-- using the same formula to find a valid price for those null values
+-- price = total_spent / qty 
+-- found 1192 rows that have price as null value 
+select count(*)
+from cafe_sales 
+where price is null; 
 
--- ============================================================================
--- 7. PRICE CLEANING
--- ============================================================================
--- Using the same formula to find a valid price for those null values:
---   price = total_spent / qty
--- Found 1192 rows that have price as a null value.
+-- updating all price null values 
 
-SELECT COUNT(*)
-FROM cafe_sales
-WHERE price IS NULL;
+update cafe_sales 
+set price =(total_spent/qty)
+where price is null
+and qty is not null 
+and total_spent is not null
+and qty <>0; 
 
--- Updating all price null values
 
-UPDATE cafe_sales
-SET price = (total_spent / qty)
-WHERE price IS NULL
-  AND qty IS NOT NULL
-  AND total_spent IS NOT NULL
-  AND qty <> 0;
-
-SELECT
+SELECT 
     CASE
         WHEN qty IS NULL AND total_spent IS NULL THEN 'Missing qty and total_spent'
         WHEN qty IS NULL THEN 'Missing qty'
         WHEN total_spent IS NULL THEN 'Missing total_spent'
-        WHEN qty = 0 THEN 'qty is zero'
+        WHEN qty = 0 then 'qty is zero '
     END AS reason,
-    COUNT(*) AS cnt
+    COUNT(*) cnt
 FROM cafe_sales
 WHERE price IS NULL
 GROUP BY reason;
--- we got 169 rows where price is null that we can't recover because we are missing total spent
+-- we got 169 rows were price is null  that we can't recover because  we are missing total spent  
 -- these have qty but couldn't be recovered because total_spent itself is also missing
 
+-- 8.total spent CLEANING 
+-- using the same formula to find a valid total spent  for those null values
+-- total_spent = price * qty 
+-- found 1540 rows that have total_spent  as null value 
+select count(*)
+from cafe_sales
+where total_spent is null ; 
 
--- ============================================================================
--- 8. TOTAL_SPENT CLEANING
--- ============================================================================
--- Using the same formula to find a valid total spent for those null values:
---   total_spent = price * qty
--- Found 1540 rows that have total_spent as a null value.
+-- 1197 values are recoverbale
 
-SELECT COUNT(*)
-FROM cafe_sales
-WHERE total_spent IS NULL;
+select count(*)
+from cafe_sales 
+where total_spent is null 
+and price is not null 
+and qty is not null ; 
 
--- 1197 values are recoverable
+ -- updating all total_spent  null values 
 
-SELECT COUNT(*)
-FROM cafe_sales
-WHERE total_spent IS NULL
-  AND price IS NOT NULL
-  AND qty IS NOT NULL;
+update cafe_sales 
+set total_spent =(price * qty)
+where total_spent is null
+and qty is not null 
+and price is not null ;
 
--- Updating all total_spent null values
+select count(*),
+SUM(case when qty = 0 then 1 else 0 end )zero_qty ,
+SUM(case when price is null or qty is null then 1 else 0 end )non_recoverbale
+from  cafe_sales 
+where total_spent is null ;
+ -- 343 non recoverbale 
+-- 9.payment_method cleaning 
+-- found 1655 invalid values  
 
-UPDATE cafe_sales
-SET total_spent = (price * qty)
-WHERE total_spent IS NULL
-  AND qty IS NOT NULL
-  AND price IS NOT NULL;
+select count(*) 
+from cafe_sales 
+where lower(trim(payment_method )) in ('nan','unknown','error','missing','') and payment_method is not null;
+ 
+ -- updating all invalid values to null values
+ 
+ 
+update cafe_sales 
+set payment_method = null 
+where lower(trim(payment_method )) in ('nan','unknown','error','missing','') and payment_method is not null;
 
-SELECT
-    COUNT(*),
-    SUM(CASE WHEN qty = 0 THEN 1 ELSE 0 END) AS zero_qty,
-    SUM(CASE WHEN price IS NULL OR qty IS NULL THEN 1 ELSE 0 END) AS non_recoverable
-FROM cafe_sales
-WHERE total_spent IS NULL;
--- 343 non recoverable
+-- 10.order type cleaning 
+-- couldn't find the dirty data values in order_type 
 
-
--- ============================================================================
--- 9. PAYMENT_METHOD CLEANING
--- ============================================================================
--- Found 1655 invalid values.
-
-SELECT COUNT(*)
-FROM cafe_sales
-WHERE LOWER(TRIM(payment_method)) IN ('nan', 'unknown', 'error', 'missing', '')
-  AND payment_method IS NOT NULL;
-
--- Updating all invalid values to null values
-
-UPDATE cafe_sales
-SET payment_method = NULL
-WHERE LOWER(TRIM(payment_method)) IN ('nan', 'unknown', 'error', 'missing', '')
-  AND payment_method IS NOT NULL;
-
-
--- ============================================================================
--- 10. ORDER_TYPE CLEANING
--- ============================================================================
--- couldn't find the dirty data values in order_type
-
-SELECT *
-FROM cafe_sales
-WHERE LOWER(TRIM(order_type)) IN ('nan', 'unknown', 'error', 'missing', '')
-  AND order_type IS NOT NULL;
-
+select  * 
+from cafe_sales
+where lower(trim(order_type )) in ('nan','unknown','error','missing','') and order_type is not null;
 -- checking the length of those words
-
-SELECT DISTINCT
-    order_type,
-    LENGTH(order_type),
-    LENGTH(TRIM(order_type))
+ SELECT DISTINCT order_type, length(order_type),length(trim(order_type))
 FROM cafe_sales
 ORDER BY order_type;
--- there's some hidden characters
--- using like function
+-- theres some hidden charachters
+-- using like function 
 
 SELECT *
 FROM cafe_sales
@@ -272,9 +241,8 @@ WHERE order_type IS NULL
    OR LOWER(TRIM(order_type)) LIKE '%unknown%'
    OR LOWER(TRIM(order_type)) LIKE '%error%'
    OR LOWER(TRIM(order_type)) LIKE '%missing%';
--- found 1479 dirty values
-
-SELECT COUNT(*)
+   -- found 1479 dirty values 
+   SELECT count(*)
 FROM cafe_sales
 WHERE order_type IS NULL
    OR order_type = ''
@@ -282,35 +250,30 @@ WHERE order_type IS NULL
    OR LOWER(TRIM(order_type)) LIKE '%unknown%'
    OR LOWER(TRIM(order_type)) LIKE '%error%'
    OR LOWER(TRIM(order_type)) LIKE '%missing%';
-
--- updating invalid values to null values
-
-UPDATE cafe_sales
-SET order_type = NULL
-WHERE order_type IS NULL
+   
+   -- updating invalid values to null values
+   
+   update cafe_sales 
+   set order_type = null 
+   where order_type IS NULL
    OR order_type = ''
    OR LOWER(TRIM(order_type)) LIKE '%nan%'
    OR LOWER(TRIM(order_type)) LIKE '%unknown%'
    OR LOWER(TRIM(order_type)) LIKE '%error%'
-   OR LOWER(TRIM(order_type)) LIKE '%missing%';
-
--- checking if all invalid values were updated successfully
-
-SELECT COUNT(*)
-FROM cafe_sales
-WHERE order_type IS NULL;
-
-
--- ============================================================================
--- 11. CHANGE COLUMN TYPE (transaction_date) TO DATE
--- ============================================================================
--- Convert valid strings to DATE values
-
-UPDATE cafe_sales
-SET transaction_date = STR_TO_DATE(transaction_date, '%d/%m/%Y')
-WHERE transaction_date IS NOT NULL;
-
-ALTER TABLE cafe_sales
-MODIFY COLUMN transaction_date DATE;
+   OR LOWER(TRIM(order_type)) LIKE '%missing%'; 
+   -- checking if all invalid values were updated successfully
+   select count(*)
+   from cafe_sales
+   where order_type is null ;
+   -- 11.Change the column type(transaction_date) to Date
+   -- Convert valid strings to DATE values
+    update cafe_sales 
+ set transaction_date = str_to_date(transaction_date,"%d/%m/%Y")
+ where transaction_date is not null ;
+ --
+alter table cafe_sales 
+modify column transaction_date  date;  
+-- End of cleaning process.
+-- Next phase: Exploratory Data Analysis
 
 
