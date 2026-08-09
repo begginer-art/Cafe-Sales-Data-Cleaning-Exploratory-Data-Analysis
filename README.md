@@ -185,11 +185,13 @@ Although Food remained the highest-revenue category overall, it recorded its fir
 
 **2.How do product categories differ in revenue contribution, purchase frequency, and transaction value?**
 
-Food is the highest value category per transaction, while Drinks is the highest frequency category.
+<img width="560" height="365" alt="image" src="https://github.com/user-attachments/assets/81e82f53-57dc-42ea-ac76-a0b7114a259b" />
 
-We have two different categories that are valuable for two different reasons: Food and Drinks.
+* Food is the highest value category per transaction, while Drinks is the highest frequency category.
 
-It's worth noting that while the dessert category comes last in revenue it still has a huge impact on our total revenue (close to 29%), so we shouldn't disregard it completely as those supplementary sales are really vital to our business
+* We have two different categories that are valuable for two different reasons: Food and Drinks.
+
+* It's worth noting that while the dessert category comes last in revenue it still has a huge impact on our total revenue (close to 29%), so we shouldn't disregard it completely as those supplementary sales are really vital to our business
 
 * Food category is our main leader for revenue since it leads the revenue by (341.8M, 38.8%) due to its high average transaction order value (113606.51)
 
