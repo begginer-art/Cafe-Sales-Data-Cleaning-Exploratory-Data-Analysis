@@ -1,6 +1,9 @@
 # Cafe Sales Data Cleaning & Exploratory Data Analysis 
+
 This project demonstrates an end-to-end SQL workflow for cleaning, validating, and analyzing a café sales dataset containing 10,000 transactions.  
 The objective was not only to prepare the data for analysis but also to answer practical business questions regarding product performance, category strategy, revenue trends, and data quality.
+
+**Tools:** MySQL (data cleaning, EDA) · Tableau (Charts)
 
 ## **Executive Summary**
 
@@ -235,7 +238,8 @@ This distinction suggests that a single promotional strategy is unlikely to maxi
 
 **Payment Methods**
 
-<img width="556" height="362" alt="image" src="https://github.com/user-attachments/assets/0f08b040-3b0a-4acb-8de7-48ea71e7261d" />
+<img width="677" height="361" alt="image" src="https://github.com/user-attachments/assets/73248079-4c15-484f-a2ff-c3e29564c512" />
+
 
 * Revenue was relatively evenly distributed across the identified payment methods. Debit Card generated the largest share at 32.75%, closely followed by Digital Wallet at 31.87%, while Cash accounted for 18.84%. No recorded payment method clearly dominates revenue.
 
@@ -243,7 +247,9 @@ This distinction suggests that a single promotional strategy is unlikely to maxi
 
 **Order Types**
 
-<img width="560" height="362" alt="image" src="https://github.com/user-attachments/assets/6764cb42-6e15-4e40-8bf0-83c0a8f0cea2" />
+<img width="677" height="361" alt="image" src="https://github.com/user-attachments/assets/b69b0669-ff50-4e46-8339-f2c7b1451097" />
+
+
 
 * Order type revenue was relatively evenly distributed across the three identified channels: Dine In (28.79%), Take Away (28.53%), and Online Order (27.60%). No single order type generated a substantially larger share of revenue. However, 15.09% of revenue is associated with uncategorized order types, which limits the reliability of conclusions about channel performance.
 
